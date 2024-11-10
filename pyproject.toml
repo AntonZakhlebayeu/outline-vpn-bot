@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "outline-vpn-telegram-bot"
+version = "0.1.0"
+description = ""
+authors = ["Anton Zakhlebayeu <antonzakhlebayeu@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-outline = "^1.0.1"
+python-dotenv = "^1.0.1"
+isort = "^5.13.2"
+black = "^24.10.0"
+pre-commit = "^4.0.1"
+sqlalchemy = "^2.0.36"
+pip-system-certs = "^4.0"
+python-telegram-bot = "20.8"
+certifi = "^2024.8.30"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
