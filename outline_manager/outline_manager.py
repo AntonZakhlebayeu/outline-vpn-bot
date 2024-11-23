@@ -12,6 +12,9 @@ class OutlineManager:
             print(self.client.metrics.total)
 
     def create_a_new_free_key(self, vpn_type: VPNType, user_id: int, user: User) -> str:
+        key_id = db_client.get_key_id(user_id, vpn_type)
+        if key_id:
+            self.client.delete_key(key_id)
         key = self.client.new(name=str(user_id))
         key.change_data_limit(10000000)
         db_client.add_key_id(user_id, vpn_type, key.id)

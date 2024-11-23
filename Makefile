@@ -9,12 +9,15 @@ build:
 	mv .dockerignore.backup .dockerignore
 	
 run:
-	docker run --rm --name $(IMAGE_NAME) $(IMAGE_NAME)
+	docker run --name $(IMAGE_NAME) $(IMAGE_NAME)
 
 start:
 	docker start $(IMAGE_NAME)
 
 stop: 
 	docker stop $(IMAGE_NAME)
+
+remove:
+	docker rm $(IMAGE_NAME)
 
 build-and-run: build run

@@ -3,7 +3,7 @@ import logging
 from telegram import InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 
-from telegram_bot.constants import (CONNECTION_RESET_TEXT, BACK_TO_SELECTION_BUTTON_TEXT, SEND_NEW_VPN_CONNECTION, SENDING_VPN_CLIENT, VPN_BUTTON_TEXT, BACK_TO_SELECTION, CHOOSE_VPN_BUTTON_TEXT, CHOOSE_VPN_TEXT, ESTONIA, POLAND, SELECTING_VPN, MAIN_MENU_BUTTON_TEXT, GET_VPN_CLIENT, ABOUT_PROJECT, BACK_TO_MAIN_MENU_BUTTON_TEXT, ABOUT_PROJECT_TEXT, MAIN_MENU_TEXT, BACK_TO_MAIN_MENU, WELCOME_MESSAGE_BUTTON_TEXT, WELCOME_MESSAGE_TEXT, WELCOME_MESSAGE, SELECTING_ACTION, MAIN_MENU)
+from telegram_bot.constants import (OUTLINE_TEXT, CONNECTION_RESET_TEXT, BACK_TO_SELECTION_BUTTON_TEXT, SEND_NEW_VPN_CONNECTION, SENDING_VPN_CLIENT, VPN_BUTTON_TEXT, BACK_TO_SELECTION, CHOOSE_VPN_BUTTON_TEXT, CHOOSE_VPN_TEXT, ESTONIA, POLAND, SELECTING_VPN, MAIN_MENU_BUTTON_TEXT, GET_VPN_CLIENT, ABOUT_PROJECT, BACK_TO_MAIN_MENU_BUTTON_TEXT, ABOUT_PROJECT_TEXT, MAIN_MENU_TEXT, BACK_TO_MAIN_MENU, WELCOME_MESSAGE_BUTTON_TEXT, WELCOME_MESSAGE_TEXT, WELCOME_MESSAGE, SELECTING_ACTION, MAIN_MENU)
 from telegram_bot.utils import (generate_keyboard_buttons, return_user_selection, send_vpn_text, delete_key)
 from db_client.client import db_client
 
@@ -49,6 +49,11 @@ async def vpn(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
             VPN_BUTTON_TEXT,
             callback_data=[SEND_NEW_VPN_CONNECTION, BACK_TO_SELECTION],
         )
+    )
+
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=OUTLINE_TEXT,
     )
 
     text = send_vpn_text(vpn_type, update.effective_user.id, update.callback_query.from_user)

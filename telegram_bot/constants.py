@@ -59,3 +59,21 @@ VPN_BUTTON_TEXT = [
 ]
 
 CONNECTION_RESET_TEXT = """Your connection has been reset."""
+OUTLINE_TEXT = """Use this server to safely access the open internet:
+
+1) Download and install the Outline app for your device:
+
+- iOS: https://itunes.apple.com/app/outline-app/id1356177741
+- MacOS: https://itunes.apple.com/app/outline-app/id1356178125
+- Windows: https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe
+- Linux: https://s3.amazonaws.com/outline-releases/client/linux/stable/Outline-Client.AppImage
+- Android: https://play.google.com/store/apps/details?id=org.outline.android.client
+- Android alternative link: https://s3.amazonaws.com/outline-releases/client/android/stable/Outline-Client.apk
+
+2) You will receive an access key that starts with ss://. Once your receive it, copy this access key.
+
+3) Open the Outline client app. If your access key is auto-detected, tap "Connect" and proceed. If your access key is not auto-detected, then paste it in the field, then tap "Connect" and proceed.
+
+You're ready to use the open internet! To make sure you successfully connected to the server, try searching for "what is my ip" on Google Search. The IP address shown in Google should match the IP address in the Outline client.
+
+Learn more about Outline here: https://getoutline.org/"""
