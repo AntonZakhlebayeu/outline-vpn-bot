@@ -23,10 +23,10 @@ from telegram_bot.bot_methods import (about_the_project, main_menu,
                                       selection_vpn, selection_vpn_nested,
                                       start, vpn)
 from telegram_bot.constants import (ABOUT_PROJECT, BACK_TO_MAIN_MENU,
-                                    BACK_TO_SELECTION, ESTONIA, GET_VPN_CLIENT,
-                                    MAIN_MENU, POLAND, SELECTING_ACTION,
-                                    SELECTING_VPN, SEND_NEW_VPN_CONNECTION,
-                                    WELCOME_MESSAGE)
+                                    BACK_TO_SELECTION, ESTONIA, GEORGIA,
+                                    GET_VPN_CLIENT, MAIN_MENU, POLAND,
+                                    SELECTING_ACTION, SELECTING_VPN,
+                                    SEND_NEW_VPN_CONNECTION, WELCOME_MESSAGE)
 from telegram_bot.conversation_handler_factory import \
     ConversationHandlerFactory
 
@@ -54,7 +54,9 @@ class TelegramBot:
         """Configure telegram client using ConversationHandlerFactory"""
         vpn_handler = self.__conversation_handler_factory.create(
             entry_points=[
-                CallbackQueryHandler(vpn, pattern=f"^{str(POLAND)}$|{str(ESTONIA)}$"),
+                CallbackQueryHandler(
+                    vpn, pattern=f"^{str(POLAND)}$|{str(ESTONIA)}$|{str(GEORGIA)}$"
+                ),
             ],
             states={},
             fallbacks=[

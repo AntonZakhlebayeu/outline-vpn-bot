@@ -7,15 +7,13 @@ from db_client.client import db_client
 from telegram_bot.constants import (ABOUT_PROJECT, ABOUT_PROJECT_TEXT,
                                     BACK_TO_MAIN_MENU,
                                     BACK_TO_MAIN_MENU_BUTTON_TEXT,
-                                    BACK_TO_SELECTION,
-                                    BACK_TO_SELECTION_BUTTON_TEXT,
-                                    CHOOSE_VPN_BUTTON_TEXT, CHOOSE_VPN_TEXT,
-                                    CONNECTION_RESET_TEXT, ESTONIA,
-                                    GET_VPN_CLIENT, MAIN_MENU,
-                                    MAIN_MENU_BUTTON_TEXT, MAIN_MENU_TEXT,
-                                    OUTLINE_TEXT, POLAND, SELECTING_ACTION,
-                                    SELECTING_VPN, SEND_NEW_VPN_CONNECTION,
-                                    SENDING_VPN_CLIENT, VPN_BUTTON_TEXT,
+                                    BACK_TO_SELECTION, CHOOSE_VPN_BUTTON_TEXT,
+                                    CHOOSE_VPN_TEXT, CONNECTION_RESET_TEXT,
+                                    ESTONIA, GEORGIA, GET_VPN_CLIENT,
+                                    MAIN_MENU, MAIN_MENU_BUTTON_TEXT,
+                                    MAIN_MENU_TEXT, OUTLINE_TEXT, POLAND,
+                                    SELECTING_ACTION, SELECTING_VPN,
+                                    SEND_NEW_VPN_CONNECTION, VPN_BUTTON_TEXT,
                                     WELCOME_MESSAGE,
                                     WELCOME_MESSAGE_BUTTON_TEXT,
                                     WELCOME_MESSAGE_TEXT)
@@ -95,7 +93,7 @@ async def selection_vpn_nested(
     keyboard = InlineKeyboardMarkup(
         generate_keyboard_buttons(
             CHOOSE_VPN_BUTTON_TEXT,
-            callback_data=[POLAND, ESTONIA, BACK_TO_MAIN_MENU],
+            callback_data=[POLAND, ESTONIA, GEORGIA, BACK_TO_MAIN_MENU],
         )
     )
 
@@ -113,7 +111,7 @@ async def selection_vpn(update: Update, context: ContextTypes.DEFAULT_TYPE) -> i
     keyboard = InlineKeyboardMarkup(
         generate_keyboard_buttons(
             CHOOSE_VPN_BUTTON_TEXT,
-            callback_data=[POLAND, ESTONIA, BACK_TO_MAIN_MENU],
+            callback_data=[POLAND, ESTONIA, GEORGIA, BACK_TO_MAIN_MENU],
         )
     )
 

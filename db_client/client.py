@@ -47,6 +47,8 @@ class DatabaseClient:
                 user.poland_key_id = key_id
             elif vpn_type == VPNType.ESTONIA:
                 user.estonia_key_id = key_id
+            elif vpn_type == VPNType.GEORGIA:
+                user.georgia_key_id = key_id
             else:
                 raise ValueError("Invalid VPN type")
             self.session.commit()
@@ -58,6 +60,8 @@ class DatabaseClient:
                 return user.poland_key_id
             elif vpn_type == VPNType.ESTONIA:
                 return user.estonia_key_id
+            elif vpn_type == VPNType.GEORGIA:
+                return user.georgia_key_id
             else:
                 raise ValueError("Invalid VPN type")
 
@@ -68,6 +72,8 @@ class DatabaseClient:
                 user.poland_key_id = new_key_id
             elif vpn_type == VPNType.ESTONIA:
                 user.estonia_key_id = new_key_id
+            elif vpn_type == VPNType.GEORGIA:
+                user.georgia_key_id = new_key_id
             else:
                 raise ValueError("Invalid VPN type")
             self.session.commit()
@@ -79,6 +85,8 @@ class DatabaseClient:
                 user.poland_key_id = None
             elif vpn_type == VPNType.ESTONIA:
                 user.estonia_key_id = None
+            elif vpn_type == VPNType.GEORGIA:
+                user.georgia_key_id = None
             else:
                 raise ValueError("Invalid VPN type")
             self.session.commit()

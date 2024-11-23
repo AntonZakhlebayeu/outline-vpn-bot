@@ -37,6 +37,9 @@ CHOOSE_VPN_TEXT = """Here you can access VPN servers in Estonia and Poland. Choo
 🌍 Estonia VPN: Connect through Estonia to enjoy fast and secure access to Estonian-based sites and services. Ideal for privacy and accessing region-specific content.
 You have unlimited usage for the Estonia VPN server.
 
+🌍 Georgia VPN: Connect through Georgia to enjoy fast and secure access to Georgia-based sites and services. Ideal for privacy and accessing region-specific content.
+You have unlimited usage for the Georgia VPN server.
+
 🌍 Poland VPN: This option connects you via Poland, providing reliable access to Polish-based content and services with optimized performance. The Poland VPN server is perfect for tasks requiring a stable and high-demand connection.
 You have limited usage with up to 10 hours per day for the Poland VPN server. After reaching this limit, access will switch back to the Estonia VPN server.
 
@@ -44,10 +47,12 @@ Choose the location that best suits your needs, and let this VPN bot help keep y
 CHOOSE_VPN_BUTTON_TEXT = [
     "Poland",
     "Estonia",
+    "Georgia",
     "Back to main menu",
 ]
 POLAND = 23
 ESTONIA = 24
+GEORGIA = 25
 SELECTING_VPN = 3
 BACK_TO_SELECTION = 998
 

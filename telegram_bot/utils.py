@@ -1,7 +1,8 @@
 from telegram import InlineKeyboardButton, User
 
 from outline_manager.constants import VPNType
-from outline_manager.managers import estonia_manager, poland_manager
+from outline_manager.managers import (estonia_manager, georgia_manager,
+                                      poland_manager)
 from telegram_bot.constants import ESTONIA, POLAND
 
 
@@ -17,6 +18,8 @@ def return_key(vpn_type: VPNType, user_id: str, user: User) -> str:
         return poland_manager.create_a_new_free_key(vpn_type, user_id, user)
     elif vpn_type == VPNType.ESTONIA:
         return estonia_manager.create_a_new_free_key(vpn_type, user_id, user)
+    elif vpn_type == VPNType.GEORGIA:
+        return georgia_manager.create_a_new_free_key(vpn_type, user_id, user)
     else:
         raise ValueError("Unsupported VPN type.")
 
@@ -26,6 +29,8 @@ def delete_key(vpn_type: VPNType, user_id: str) -> None:
         poland_manager.remove_key(user_id, vpn_type)
     elif vpn_type == VPNType.ESTONIA:
         estonia_manager.remove_key(user_id, vpn_type)
+    elif vpn_type == VPNType.GEORGIA:
+        georgia_manager.remove_key(user_id, vpn_type)
     else:
         raise ValueError("Unsupported VPN type.")
 
