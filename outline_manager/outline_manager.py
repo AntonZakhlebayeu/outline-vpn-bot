@@ -1,7 +1,8 @@
 from outline.client import OutlineClient
+from telegram import User
+
 from db_client.client import db_client
 from outline_manager.constants import VPNType
-from telegram import User
 
 
 class OutlineManager:
@@ -20,7 +21,7 @@ class OutlineManager:
         db_client.add_key_id(user_id, vpn_type, key.id)
         last_name = f" {user.last_name}" if user.last_name else ""
         return key.url(f"{user.first_name}{last_name} {vpn_type}")
-    
+
     def remove_key(self, user_id: int, vpn_type: VPNType) -> None:
         key_id = db_client.get_key_id(user_id, vpn_type)
         self.client.delete_key(key_id)

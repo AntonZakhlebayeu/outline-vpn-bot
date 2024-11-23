@@ -17,11 +17,16 @@ from telegram import Update
 from telegram.ext import (Application, CallbackQueryHandler, CommandHandler,
                           MessageHandler, PicklePersistence, filters)
 
-from telegram_bot.bot_methods import (reset_connection, main_menu_nested, selection_vpn, selection_vpn_nested, vpn, about_the_project, main_menu, start)
 from config.config import config
-from telegram_bot.constants import (SEND_NEW_VPN_CONNECTION, GET_VPN_CLIENT, POLAND, ESTONIA, BACK_TO_SELECTION, SELECTING_VPN, ABOUT_PROJECT, BACK_TO_MAIN_MENU, MAIN_MENU, SELECTING_ACTION, WELCOME_MESSAGE)
-
-from config.config import config
+from telegram_bot.bot_methods import (about_the_project, main_menu,
+                                      main_menu_nested, reset_connection,
+                                      selection_vpn, selection_vpn_nested,
+                                      start, vpn)
+from telegram_bot.constants import (ABOUT_PROJECT, BACK_TO_MAIN_MENU,
+                                    BACK_TO_SELECTION, ESTONIA, GET_VPN_CLIENT,
+                                    MAIN_MENU, POLAND, SELECTING_ACTION,
+                                    SELECTING_VPN, SEND_NEW_VPN_CONNECTION,
+                                    WELCOME_MESSAGE)
 from telegram_bot.conversation_handler_factory import \
     ConversationHandlerFactory
 
@@ -49,12 +54,9 @@ class TelegramBot:
         """Configure telegram client using ConversationHandlerFactory"""
         vpn_handler = self.__conversation_handler_factory.create(
             entry_points=[
-                CallbackQueryHandler(
-                    vpn, pattern=f"^{str(POLAND)}$|{str(ESTONIA)}$"
-                ),
+                CallbackQueryHandler(vpn, pattern=f"^{str(POLAND)}$|{str(ESTONIA)}$"),
             ],
-            states={
-            },
+            states={},
             fallbacks=[
                 CallbackQueryHandler(
                     selection_vpn_nested,
@@ -83,7 +85,9 @@ class TelegramBot:
                     main_menu_nested,
                     pattern=f"^{str(BACK_TO_MAIN_MENU)}$",
                 ),
-                CallbackQueryHandler(selection_vpn, pattern=f"^{str(BACK_TO_SELECTION)}$"),
+                CallbackQueryHandler(
+                    selection_vpn, pattern=f"^{str(BACK_TO_SELECTION)}$"
+                ),
             ],
             map_to_parent={BACK_TO_MAIN_MENU: SELECTING_ACTION},
             name="ask_gpt_conv",
@@ -122,7 +126,7 @@ class TelegramBot:
         )
 
         self.__application.add_handler(start_handler)
-    
+
     def run_telegram_client(self) -> None:
         """Start up the telegram client"""
         self.__configure_telegram_client()

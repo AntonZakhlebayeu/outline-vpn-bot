@@ -3,10 +3,24 @@ import logging
 from telegram import InlineKeyboardMarkup, Update
 from telegram.ext import ContextTypes
 
-from telegram_bot.constants import (OUTLINE_TEXT, CONNECTION_RESET_TEXT, BACK_TO_SELECTION_BUTTON_TEXT, SEND_NEW_VPN_CONNECTION, SENDING_VPN_CLIENT, VPN_BUTTON_TEXT, BACK_TO_SELECTION, CHOOSE_VPN_BUTTON_TEXT, CHOOSE_VPN_TEXT, ESTONIA, POLAND, SELECTING_VPN, MAIN_MENU_BUTTON_TEXT, GET_VPN_CLIENT, ABOUT_PROJECT, BACK_TO_MAIN_MENU_BUTTON_TEXT, ABOUT_PROJECT_TEXT, MAIN_MENU_TEXT, BACK_TO_MAIN_MENU, WELCOME_MESSAGE_BUTTON_TEXT, WELCOME_MESSAGE_TEXT, WELCOME_MESSAGE, SELECTING_ACTION, MAIN_MENU)
-from telegram_bot.utils import (generate_keyboard_buttons, return_user_selection, send_vpn_text, delete_key)
 from db_client.client import db_client
-
+from telegram_bot.constants import (ABOUT_PROJECT, ABOUT_PROJECT_TEXT,
+                                    BACK_TO_MAIN_MENU,
+                                    BACK_TO_MAIN_MENU_BUTTON_TEXT,
+                                    BACK_TO_SELECTION,
+                                    BACK_TO_SELECTION_BUTTON_TEXT,
+                                    CHOOSE_VPN_BUTTON_TEXT, CHOOSE_VPN_TEXT,
+                                    CONNECTION_RESET_TEXT, ESTONIA,
+                                    GET_VPN_CLIENT, MAIN_MENU,
+                                    MAIN_MENU_BUTTON_TEXT, MAIN_MENU_TEXT,
+                                    OUTLINE_TEXT, POLAND, SELECTING_ACTION,
+                                    SELECTING_VPN, SEND_NEW_VPN_CONNECTION,
+                                    SENDING_VPN_CLIENT, VPN_BUTTON_TEXT,
+                                    WELCOME_MESSAGE,
+                                    WELCOME_MESSAGE_BUTTON_TEXT,
+                                    WELCOME_MESSAGE_TEXT)
+from telegram_bot.utils import (delete_key, generate_keyboard_buttons,
+                                return_user_selection, send_vpn_text)
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename="telegram-bot.log")
@@ -23,7 +37,11 @@ async def reset_connection(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         )
     )
 
-    text = send_vpn_text(context.user_data["vpn"], update.effective_user.id, update.callback_query.from_user)
+    text = send_vpn_text(
+        context.user_data["vpn"],
+        update.effective_user.id,
+        update.callback_query.from_user,
+    )
 
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
@@ -31,7 +49,7 @@ async def reset_connection(update: Update, context: ContextTypes.DEFAULT_TYPE) -
 
 {text}""",
         reply_markup=keyboard,
-        parse_mode="HTML"
+        parse_mode="HTML",
     )
 
     return SEND_NEW_VPN_CONNECTION
@@ -56,19 +74,23 @@ async def vpn(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         text=OUTLINE_TEXT,
     )
 
-    text = send_vpn_text(vpn_type, update.effective_user.id, update.callback_query.from_user)
+    text = send_vpn_text(
+        vpn_type, update.effective_user.id, update.callback_query.from_user
+    )
 
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text=text,
         reply_markup=keyboard,
-        parse_mode="HTML"
+        parse_mode="HTML",
     )
 
     return SEND_NEW_VPN_CONNECTION
 
 
-async def selection_vpn_nested(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def selection_vpn_nested(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> int:
     context.user_data["vpn"] = None
     keyboard = InlineKeyboardMarkup(
         generate_keyboard_buttons(

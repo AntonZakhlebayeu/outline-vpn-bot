@@ -1,7 +1,8 @@
 from telegram import InlineKeyboardButton, User
+
 from outline_manager.constants import VPNType
-from outline_manager.managers import poland_manager, estonia_manager
-from telegram_bot.constants import POLAND, ESTONIA
+from outline_manager.managers import estonia_manager, poland_manager
+from telegram_bot.constants import ESTONIA, POLAND
 
 
 def return_user_selection(selection: int) -> VPNType:
@@ -9,7 +10,7 @@ def return_user_selection(selection: int) -> VPNType:
         return VPNType.POLAND
     elif selection == ESTONIA:
         return VPNType.ESTONIA
-    
+
 
 def return_key(vpn_type: VPNType, user_id: str, user: User) -> str:
     if vpn_type == VPNType.POLAND:
@@ -18,7 +19,8 @@ def return_key(vpn_type: VPNType, user_id: str, user: User) -> str:
         return estonia_manager.create_a_new_free_key(vpn_type, user_id, user)
     else:
         raise ValueError("Unsupported VPN type.")
-    
+
+
 def delete_key(vpn_type: VPNType, user_id: str) -> None:
     if vpn_type == VPNType.POLAND:
         poland_manager.remove_key(user_id, vpn_type)
@@ -26,7 +28,7 @@ def delete_key(vpn_type: VPNType, user_id: str) -> None:
         estonia_manager.remove_key(user_id, vpn_type)
     else:
         raise ValueError("Unsupported VPN type.")
-    
+
 
 def send_vpn_text(vpn_type: VPNType, user_id: str, user: User) -> str:
     key = return_key(vpn_type, user_id, user)
@@ -34,7 +36,6 @@ def send_vpn_text(vpn_type: VPNType, user_id: str, user: User) -> str:
 If you'd like to reset your connection data, just click the "Retrieve new VPN connection" button. This will allow you to start a new session from the beginning.
 
 <code>{key}</code>"""
-
 
 
 def generate_keyboard_buttons(
