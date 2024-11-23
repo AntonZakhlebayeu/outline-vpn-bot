@@ -3,7 +3,7 @@ from telegram import InlineKeyboardButton, User
 from outline_manager.constants import VPNType
 from outline_manager.managers import (estonia_manager, georgia_manager,
                                       poland_manager)
-from telegram_bot.constants import ESTONIA, POLAND
+from telegram_bot.constants import ESTONIA, POLAND, GEORGIA
 
 
 def return_user_selection(selection: int) -> VPNType:
@@ -11,6 +11,8 @@ def return_user_selection(selection: int) -> VPNType:
         return VPNType.POLAND
     elif selection == ESTONIA:
         return VPNType.ESTONIA
+    elif selection == GEORGIA:
+        return VPNType.GEORGIA
 
 
 def return_key(vpn_type: VPNType, user_id: str, user: User) -> str:
