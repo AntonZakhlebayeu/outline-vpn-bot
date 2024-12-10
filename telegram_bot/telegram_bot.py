@@ -55,7 +55,7 @@ class TelegramBot:
         vpn_handler = self.__conversation_handler_factory.create(
             entry_points=[
                 CallbackQueryHandler(
-                    vpn, pattern=f"^{str(POLAND)}$|{str(ESTONIA)}$|{str(GEORGIA)}$"
+                    vpn, pattern=f"^{str(POLAND)}$|{str(GEORGIA)}$|{str(ESTONIA)}$"
                 ),
             ],
             states={},

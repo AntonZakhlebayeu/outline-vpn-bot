@@ -3,7 +3,7 @@ from telegram import InlineKeyboardButton, User
 from outline_manager.constants import VPNType
 from outline_manager.managers import (georgia_manager,
                                       poland_manager)
-from telegram_bot.constants import POLAND, GEORGIA
+from telegram_bot.constants import POLAND, ESTONIA, GEORGIA
 
 
 def return_user_selection(selection: int) -> VPNType:
