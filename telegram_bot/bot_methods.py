@@ -93,7 +93,7 @@ async def selection_vpn_nested(
     keyboard = InlineKeyboardMarkup(
         generate_keyboard_buttons(
             CHOOSE_VPN_BUTTON_TEXT,
-            callback_data=[POLAND, ESTONIA, GEORGIA, BACK_TO_MAIN_MENU],
+            callback_data=[POLAND, GEORGIA, BACK_TO_MAIN_MENU],
         )
     )
 
@@ -111,7 +111,7 @@ async def selection_vpn(update: Update, context: ContextTypes.DEFAULT_TYPE) -> i
     keyboard = InlineKeyboardMarkup(
         generate_keyboard_buttons(
             CHOOSE_VPN_BUTTON_TEXT,
-            callback_data=[POLAND, ESTONIA, GEORGIA, BACK_TO_MAIN_MENU],
+            callback_data=[POLAND, GEORGIA, BACK_TO_MAIN_MENU],
         )
     )
 

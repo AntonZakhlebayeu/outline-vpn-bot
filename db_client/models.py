@@ -13,5 +13,4 @@ class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, autoincrement=False)
     poland_key_id = Column(Integer, nullable=True)
-    estonia_key_id = Column(Integer, nullable=True)
     georgia_key_id = Column(Integer, nullable=True)

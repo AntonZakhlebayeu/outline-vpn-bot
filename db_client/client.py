@@ -46,7 +46,7 @@ class DatabaseClient:
             if vpn_type == VPNType.POLAND:
                 user.poland_key_id = key_id
             elif vpn_type == VPNType.ESTONIA:
-                user.estonia_key_id = key_id
+                pass
             elif vpn_type == VPNType.GEORGIA:
                 user.georgia_key_id = key_id
             else:
@@ -59,7 +59,7 @@ class DatabaseClient:
             if vpn_type == VPNType.POLAND:
                 return user.poland_key_id
             elif vpn_type == VPNType.ESTONIA:
-                return user.estonia_key_id
+                pass
             elif vpn_type == VPNType.GEORGIA:
                 return user.georgia_key_id
             else:
@@ -71,7 +71,7 @@ class DatabaseClient:
             if vpn_type == VPNType.POLAND:
                 user.poland_key_id = new_key_id
             elif vpn_type == VPNType.ESTONIA:
-                user.estonia_key_id = new_key_id
+                pass
             elif vpn_type == VPNType.GEORGIA:
                 user.georgia_key_id = new_key_id
             else:
@@ -84,7 +84,7 @@ class DatabaseClient:
             if vpn_type == VPNType.POLAND:
                 user.poland_key_id = None
             elif vpn_type == VPNType.ESTONIA:
-                user.estonia_key_id = None
+                pass
             elif vpn_type == VPNType.GEORGIA:
                 user.georgia_key_id = None
             else:
